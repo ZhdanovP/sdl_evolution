@@ -1,6 +1,6 @@
 # Policy Server direct cellular connection 
 
-* Proposal: [SDL-NNNN](policy_server_direct_cellular_connection.md)
+* Proposal: [SDL-NNNN](nnnn-policy_server_direct_cellular_connection.md)
 * Author: [Lexander Kutsan](https://github.com/LuxoftAKutsan)
 * Status: **Awaiting review**
 * Impacted Platforms: [Core]
