@@ -25,7 +25,7 @@ The HTTPS connection would be enough.
 
 Create dirrect connection to Policy Server from SDL. So PolicyManager will perfrom HTTPS request for fetching Policy table updates dirrectly.
 
-[Global Arhitecture approach](assets/proposals/nnnn-policy_server_direct_cellular_connection/Policy celluar direct connection.png)
+![Global Arhitecture approach](../assets/proposals/nnnn-policy_server_direct_cellular_connection/Policy celluar direct connection.png)
 
 ## Potential downsides
 
