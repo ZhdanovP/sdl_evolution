@@ -1,6 +1,6 @@
-# Policy Server direct cellular connection 
+# Policy Server direct communication
 
-* Proposal: [SDL-NNNN](nnnn-policy_server_direct_cellular_connection.md)
+* Proposal: [SDL-NNNN](nnnn-policy_server_direct_communication.md)
 * Author: [Lexander Kutsan](https://github.com/LuxoftAKutsan)
 * Status: **Awaiting review**
 * Impacted Platforms: [Core]
@@ -20,6 +20,11 @@ Also there would be no need to add additional encryption for policy table,
 because there will be no intermediate actors between SDL and PolicyServer. 
 The HTTPS connection would be enough.
 
+List of improvements :
+ - Reduce amount of service communications with mobile
+ - Increase performance and robustness of policy update
+ - Avoid additional encryptions and reduce amount of actors plaing in policy update flow
+ 
 
 ## Proposed solution
 
@@ -27,14 +32,28 @@ Create dirrect connection to Policy Server from SDL. So PolicyManager will perfr
 
 ![Global Arhitecture approach](../assets/proposals/nnnn-policy_server_direct_cellular_connection/policy_celluar_direct_connection.png)
 
+Existing approach to policy update :
+
+![Existing approach to policy update](../assets/proposals/nnnn-policy_server_direct_cellular_connection/current_policy_flow_.png)
+
+Proposed approach to policy update:
+
+![Proposed approach to policy update](../assets/proposals/nnnn-policy_server_direct_cellular_connection/proposed_policy_flow.png)
+
+
 ## Potential downsides
 
-Describe any potential downsides or known objections to the course of action presented in this proposal, then provide counter-arguments to these objections. You should anticipate possible objections that may come up in review and provide an initial response here. Explain why the positives of the proposal outweigh the downsides, or why the downside under discussion is not a large enough issue to prevent the proposal from being accepted.
+Required celluar connection in vehicle.
+If vehicle connection is down there is no possibility to perform policy table update.
 
 ## Impact on existing code
 
-Describe the impact that this change will have on existing code. Will some SDL integrations stop compiling due to this change? Will applications still compile but produce different behavior than they used to? Is it possible to migrate existing SDL code to use a new feature or API automatically?
+Impacts SDL core layers :
+  - Policy Manager
+  - Application Manager
+  
+Existing RPCs like `BasicCommunication.PolicyUpdate`, `SDL.GetURLs`, and some requests types in SystemRequest will be redundant. 
 
 ## Alternatives considered
 
-Describe alternative approaches to addressing the same problem, and why you chose this approach instead.
+Keep using mobile proxy for policy table update 
