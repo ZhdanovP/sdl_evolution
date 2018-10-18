@@ -7,13 +7,13 @@
 
 ## Introduction
 
-This proposal is about communication with PolicyServer directly via vehicle celluar data, reducing of communicaitons amount and simplify policies flow. 
+This proposal is about communication with Policy Server directly via vehicle cellular data, reducing of communicaitons amount and simplify policies flow. 
 
 ## Motivation
 
-Policy update is complicated process, it requires many RPC communications and send a lot of data throw mobile chanel.
-Nearest generation of headunits will have dirrect cellular connection, and communicaiton with policy server
-can be done dirrectly wihtout using SDLProxy ad Mobile cellular data. 
+Policy update is complicated process, it requires many RPC communications and sends a lot of data through mobile channel.
+Next generation of headunits will have direct cellular access to internet, and communication with policy server
+can be done directly wihtout using SDLProxy ad Mobile cellular data. 
 Remove layer of abstraction in Policy table updates.
 It will reduce amount of data sent via mobile transport, simplify Update Policy flow.
 Also there would be no need to add additional encryption for policy table,
@@ -23,27 +23,27 @@ The HTTPS connection would be enough.
 List of improvements :
  - Reduce amount of service communications with mobile
  - Increase performance and robustness of policy update
- - Avoid additional encryptions and reduce amount of actors plaing in policy update flow
+ - Avoid additional encryptions and reduce amount of actors playing in policy update flow
  
 
 ## Proposed solution
 
-Create dirrect connection to Policy Server from SDL. So PolicyManager will perfrom HTTPS request for fetching Policy table updates dirrectly.
+Create direct connection to Policy Server from SDL. So PolicyManager will perfrom HTTPS request for fetching Policy table updates directly.
 
 ![Global Arhitecture approach](../assets/proposals/nnnn-policy_server_direct_cellular_connection/policy_celluar_direct_connection.png)
 
-Existing approach to policy update :
+Existing approach of policy update :
 
-![Existing approach to policy update](../assets/proposals/nnnn-policy_server_direct_cellular_connection/current_policy_flow_.png)
+![Existing approach of policy update](../assets/proposals/nnnn-policy_server_direct_cellular_connection/current_policy_flow_.png)
 
-Proposed approach to policy update:
+Proposed approach of policy update:
 
-![Proposed approach to policy update](../assets/proposals/nnnn-policy_server_direct_cellular_connection/proposed_policy_flow.png)
+![Proposed approach of policy update](../assets/proposals/nnnn-policy_server_direct_cellular_connection/proposed_policy_flow.png)
 
 
 ## Potential downsides
 
-Required celluar connection in vehicle.
+Required cellular connection in vehicle.
 If vehicle connection is down there is no possibility to perform policy table update.
 
 ## Impact on existing code
